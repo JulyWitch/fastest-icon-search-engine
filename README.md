@@ -2,6 +2,8 @@
 
 Welcome to the **Fastest Icon Search Engine**, a blazing-fast, serverless yet memory-efficient solution for finding icons from various sources. This project leverages cutting-edge techniques to deliver unparalleled performance in icon search and retrieval.
 
+This project is inspired by [react-icons](https://react-icons.github.io/react-icons)
+
 ## 🏎️ Why is it the Fastest?
 
 1. **Inverted Index Search Algorithm**  
