@@ -1,0 +1,551 @@
+[
+	{
+		"name": "Ant Design",
+		"repository": "https://github.com/ant-design/ant-design-icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/ant-design/ant-design-icons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "packages/icons-svg/svg/filled",
+				"prefix": "ant",
+				"postfix": "filled",
+				"keywords": [
+					"antd",
+					"ant design",
+					"ant",
+					"filled",
+					"solid"
+				]
+			},
+			{
+				"path": "packages/icons-svg/svg/outlined",
+				"prefix": "ant",
+				"postfix": "outlined",
+				"keywords": [
+					"antd",
+					"ant design",
+					"ant",
+					"outline",
+					"stroke"
+				]
+			}
+		]
+	},
+	{
+		"name": "Simple Icons",
+		"repository": "https://github.com/simple-icons/simple-icons",
+		"license": {
+			"type": "CC0",
+			"url": "https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "simple",
+				"keywords": [
+					"simple",
+					"simpleicons",
+					"simple icons"
+				]
+			}
+		]
+	},
+	{
+		"name": "Line Awesome",
+		"repository": "https://github.com/icons8/line-awesome",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/icons8/line-awesome/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "svg",
+				"prefix": "lineawesome",
+				"keywords": ["la", "line", "line awesome"]
+			}
+		]
+	},
+	{
+		"name": "Feather",
+		"repository": "https://github.com/feathericons/feather",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/feathericons/feather/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "feather",
+				"keywords": ["feather"]
+			}
+		]
+	},
+	{
+		"name": "Remix",
+		"repository": "https://github.com/Remix-Design/RemixIcon",
+		"license": {
+			"type": "Apache2",
+			"url": "https://github.com/Remix-Design/RemixIcon/blob/master/License"
+		},
+		"sources": [
+			{
+				"path": "icons/Arrows",
+				"prefix": "remix",
+				"keywords": ["remix", "arrow"]
+			},
+			{
+				"path": "icons/Buildings",
+				"prefix": "remix",
+				"keywords": ["building", "remix"]
+			},
+			{
+				"path": "icons/Business",
+				"prefix": "remix",
+				"keywords": ["business", "remix"]
+			},
+			{
+				"path": "icons/Communication",
+				"prefix": "remix",
+				"keywords": ["communication", "remix"]
+			},
+			{
+				"path": "icons/Design",
+				"prefix": "remix",
+				"keywords": ["design", "remix"]
+			},
+			{
+				"path": "icons/Development",
+				"prefix": "remix",
+				"keywords": ["development", "remix"]
+			},
+			{
+				"path": "icons/Device",
+				"prefix": "remix",
+				"keywords": ["device", "remix"]
+			},
+			{
+				"path": "icons/Document",
+				"prefix": "remix",
+				"keywords": ["document", "remix"]
+			},
+			{
+				"path": "icons/Editor",
+				"prefix": "remix",
+				"keywords": ["editor", "remix"]
+			},
+			{
+				"path": "icons/Finance",
+				"prefix": "remix",
+				"keywords": ["finance", "remix"]
+			},
+			{
+				"path": "icons/Food",
+				"prefix": "remix",
+				"keywords": ["food", "remix"]
+			},
+			{
+				"path": "icons/Health & Medical",
+				"prefix": "remix",
+				"keywords": ["health", "remix", "medical"]
+			},
+			{
+				"path": "icons/Logos",
+				"prefix": "remix",
+				"keywords": ["logos", "remix"]
+			},
+			{
+				"path": "icons/Map",
+				"prefix": "remix",
+				"keywords": ["map", "remix"]
+			},
+			{
+				"path": "icons/Media",
+				"prefix": "remix",
+				"keywords": ["media", "remix"]
+			},
+			{
+				"path": "icons/Others",
+				"prefix": "remix",
+				"keywords": ["others", "remix"]
+			},
+			{
+				"path": "icons/System",
+				"prefix": "remix",
+				"keywords": ["system", "remix"]
+			},
+			{
+				"path": "icons/User & Faces",
+				"prefix": "remix",
+				"keywords": ["user", "remix"]
+			},
+			{
+				"path": "icons/Weather",
+				"prefix": "remix",
+				"keywords": ["weather", "remix"]
+			}
+		]
+	},
+	{
+		"name": "heroicons",
+		"repository": "https://github.com/tailwindlabs/heroicons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/tailwindlabs/heroicons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "src/24/outline",
+				"prefix": "heroicons",
+				"postfix": "outlined",
+				"keywords": ["hero", "heroicons", "outline"]
+			},
+			{
+				"path": "src/24/solid",
+				"prefix": "heroicons",
+				"postfix": "filled",
+				"keywords": ["hero", "heroicons", "filled"]
+			}
+		]
+	},
+	{
+		"name": "ionicons",
+		"repository": "https://github.com/ionic-team/ionicons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/ionic-team/ionicons/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "src/svg",
+				"prefix": "ionicons",
+				"keywords": ["ionic", "ionicos"]
+			}
+		]
+	},
+	{
+		"name": "pepicons",
+		"repository": "https://github.com/CyCraft/pepicons",
+		"license": {
+			"type": "CC-BY-4.0",
+			"url": "https://github.com/CyCraft/pepicons/blob/dev/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "packages/pepicons/svg/pencil",
+				"prefix": "pepicons",
+				"postfix": "pencil",
+				"keywords": ["pep", "pepicons"]
+			},
+			{
+				"path": "packages/pepicons/svg/pop",
+				"prefix": "pepicons",
+				"postfix": "pop",
+				"keywords": ["pep", "pepicons"]
+			},
+			{
+				"path": "packages/pepicons/svg/print",
+				"prefix": "pepicons",
+				"postfix": "print",
+				"keywords": ["pep", "pepicons"]
+			}
+		]
+	},
+	{
+		"name": "lucide",
+		"repository": "https://github.com/lucide-icons/lucide",
+		"license": {
+			"type": "ISC",
+			"url": "https://github.com/lucide-icons/lucide/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "lucide",
+				"keywords": ["lucide"]
+			}
+		]
+	},
+	{
+		"name": "flowbite",
+		"repository": "https://github.com/themesberg/flowbite-icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/themesberg/flowbite-icons/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "src/outline/arrows",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "arrows"]
+			},
+			{
+				"path": "src/solid/arrows",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "arrows"]
+			},
+			{
+				"path": "src/outline/e-commerce",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": [
+					"outlined",
+					"flowbite",
+					"e-commerce"
+				]
+			},
+			{
+				"path": "src/solid/e-commerce",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "e-commerce"]
+			},
+			{
+				"path": "src/outline/emoji",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "emoji"]
+			},
+			{
+				"path": "src/solid/emoji",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "emoji"]
+			},
+			{
+				"path": "src/outline/files:folders",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": [
+					"outlined",
+					"flowbite",
+					"files:folders"
+				]
+			},
+			{
+				"path": "src/solid/files:folders",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": [
+					"filled",
+					"flowbite",
+					"files:folders"
+				]
+			},
+			{
+				"path": "src/outline/general",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "general"]
+			},
+			{
+				"path": "src/solid/general",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "general"]
+			},
+			{
+				"path": "src/outline/media",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "media"]
+			},
+			{
+				"path": "src/solid/media",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "media"]
+			},
+			{
+				"path": "src/outline/text",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "text"]
+			},
+			{
+				"path": "src/solid/text",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "text"]
+			},
+			{
+				"path": "src/outline/user",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "user"]
+			},
+			{
+				"path": "src/solid/user",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "user"]
+			},
+			{
+				"path": "src/outline/weather",
+				"prefix": "flowbite",
+				"postfix": "outlined",
+				"keywords": ["outlined", "flowbite", "weather"]
+			},
+			{
+				"path": "src/solid/weather",
+				"prefix": "flowbite",
+				"postfix": "filled",
+				"keyword": ["filled", "flowbite", "weather"]
+			}
+		]
+	},
+	{
+		"name": "tabler",
+		"repository": "https://github.com/tabler/tabler-icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/tabler/tabler-icons/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "icons/filled",
+				"prefix": "tabler",
+				"postfix": "filled",
+				"keywords": ["tabler", "filled"]
+			},
+			{
+				"path": "icons/outline",
+				"prefix": "tabler",
+				"postfix": "outlined",
+				"keywords": ["tabler", "outlined"]
+			}
+		]
+	},
+	{
+		"name": "Bootstrap",
+		"repository": "https://github.com/twbs/icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/twbs/icons/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "bootstrap",
+				"keywords": ["bootstrap", "twbs"]
+			}
+		]
+	},
+	{
+		"name": "Phosphor",
+		"repository": "https://github.com/phosphor-icons/core",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/phosphor-icons/core/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "assets/bold",
+				"prefix": "phosphor",
+				"keywords": ["phosphor"]
+			},
+			{
+				"path": "assets/duotone",
+				"prefix": "phosphor",
+				"keywords": ["phosphor"]
+			},
+			{
+				"path": "assets/fill",
+				"prefix": "phosphor",
+				"keywords": ["phosphor"]
+			},
+			{
+				"path": "assets/light",
+				"prefix": "phosphor",
+				"keywords": ["phosphor"]
+			},
+			{
+				"path": "assets/regular",
+				"prefix": "phosphor",
+				"keywords": ["phosphor"]
+			},
+			{
+				"path": "assets/thin",
+				"prefix": "phosphor",
+				"keywords": ["phosphor"]
+			}
+		]
+	},
+	{
+		"name": "SuperTinyIcons",
+		"repository": "https://github.com/edent/SuperTinyIcons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/edent/SuperTinyIcons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "images/svg",
+				"prefix": "supertiny",
+				"keywords": ["tiny"]
+			}
+		]
+	},
+	{
+		"name": "Teenyicons",
+		"repository": "https://github.com/teenyicons/teenyicons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/teenyicons/teenyicons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "src/outline",
+				"prefix": "teenyicons",
+				"postfix": "outlined",
+				"keywords": ["teenyicons", "outline", "stroke"]
+			},
+			{
+				"path": "src/solid",
+				"prefix": "teenyicons",
+				"postfix": "filled",
+				"keywords": ["teenyicons", "solid", "filled"]
+			}
+		]
+	},
+	{
+		"name": "Radix Icons",
+		"repository": "https://github.com/radix-ui/icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/radix-ui/icons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "packages/radix-icons/icons",
+				"prefix": "radix",
+				"keywords": ["radix", "radixui", "shadcn"]
+			}
+		]
+	},
+	{
+		"name": "Boxicons",
+		"repository": "https://github.com/atisawd/boxicons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/atisawd/boxicons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "svg/regular",
+				"prefix": "boxicons",
+				"postfix": "regular",
+				"keywords": ["regular", "boxicons", "outline"]
+			},
+			{
+				"path": "svg/solid",
+				"prefix": "boxicons",
+				"postfix": "filled",
+				"keywords": ["solid", "boxicons", "filled"]
+			}
+		]
+	}
+]

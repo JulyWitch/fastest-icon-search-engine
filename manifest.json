@@ -1,0 +1,9 @@
+{
+  "short_name": "Flutter Iconic",
+  "name": "Flutter Iconic - Free SVG Icons for Flutter",
+  "description": "Download free SVG icons for your Flutter applications. Browse our collection of high-quality icons, perfect for Flutter development.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1F2937",
+  "background_color": "#F9FAFB"
+}
