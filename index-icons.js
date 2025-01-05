@@ -137,7 +137,7 @@ class IconIndexer {
 }
 
 // Create directories
-mkdirSync("icons", { recursive: true });
+mkdirSync("public/icons", { recursive: true });
 mkdirSync("temp", { recursive: true });
 
 const indexer = new IconIndexer();
