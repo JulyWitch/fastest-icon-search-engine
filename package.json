@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"deploy": "gh-pages -d dist",
+		"deploy": "gh-pages -d dist --cname icons-search.sajadabdollahi.ir",
 		"lint": "eslint .",
 		"preview": "vite preview"
 	},
