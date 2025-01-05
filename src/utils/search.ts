@@ -1,4 +1,5 @@
 import { Buffer } from "buffer";
+import { ungzip } from "pako";
 
 interface Icon {
 	path: string;
@@ -18,17 +19,24 @@ export class IconSearcher {
 
 	public async initialize(url: string): Promise<void> {
 		try {
+			console.log("STEP 1");
 			const response = await fetch(url);
+			console.log("STEP 2");
 			if (!response.ok) {
 				throw new Error(
 					`HTTP error! status: ${response.status}`,
 				);
 			}
+			console.log("STEP 3");
 			const blob = await response.blob();
+			console.log("STEP 4");
+			const data = ungzip(
+				Buffer.from(await blob.arrayBuffer()),
+			);
+			console.log("STEP 5");
 			const { documents, invertedIndex, docCount } =
-				this.parseBinaryIndex(
-					Buffer.from(await blob.arrayBuffer()),
-				);
+				this.parseBinaryIndex(data);
+			console.log("STEP 6");
 			this.documents = documents;
 			this.invertedIndex = invertedIndex;
 			this.count = docCount;
