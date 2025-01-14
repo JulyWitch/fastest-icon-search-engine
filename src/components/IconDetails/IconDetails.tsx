@@ -15,10 +15,9 @@ interface IconDetailsProps {
 export function IconDetails({ icon, onClose }: IconDetailsProps) {
 	const [activeTab, setActiveTab] = useState("Preview");
 
-	if (!icon) return null;
-
 	const handleDownload = async () => {
 		try {
+			if (icon == null) return;
 			const response = await fetch(icon.path);
 			const blob = await response.blob();
 			const url = window.URL.createObjectURL(blob);
@@ -40,31 +39,33 @@ export function IconDetails({ icon, onClose }: IconDetailsProps) {
 				<h2 className="text-xl font-semibold">
 					Icon Details
 				</h2>
-				<button
-					onClick={onClose}
-					className="p-2 hover:bg-gray-100 rounded-full"
-				>
-					<X className="h-6 w-6" />
-				</button>
 			</div>
 
-			<IconCredit iconPath={icon.path} />
+			{icon == null ? (
+				<>Please select an icon</>
+			) : (
+				<>
+					<IconCredit iconPath={icon.path} />
 
-			<Tabs
-				activeTab={activeTab}
-				onTabChange={setActiveTab}
-			/>
+					<Tabs
+						activeTab={activeTab}
+						onTabChange={setActiveTab}
+					/>
 
-			{activeTab === "Preview" && (
-				<PreviewTab
-					icon={icon}
-					onDownload={handleDownload}
-				/>
+					{activeTab === "Preview" && (
+						<PreviewTab
+							icon={icon}
+							onDownload={
+								handleDownload
+							}
+						/>
+					)}
+					{activeTab === "Code" && (
+						<CodeTab iconPath={icon.path} />
+					)}
+					{activeTab === "React" && <ReactTab />}
+				</>
 			)}
-			{activeTab === "Code" && (
-				<CodeTab iconPath={icon.path} />
-			)}
-			{activeTab === "React" && <ReactTab />}
 		</div>
 	);
 }
