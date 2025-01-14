@@ -1,0 +1,70 @@
+[
+	{
+		"name": "Ant Design",
+		"repository": "https://github.com/ant-design/ant-design-icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/ant-design/ant-design-icons/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "packages/icons-svg/svg/filled",
+				"prefix": "ant",
+				"postfix": "filled",
+				"keywords": [
+					"antd",
+					"ant design",
+					"ant",
+					"filled",
+					"solid"
+				]
+			},
+			{
+				"path": "packages/icons-svg/svg/outlined",
+				"prefix": "ant",
+				"postfix": "outlined",
+				"keywords": [
+					"antd",
+					"ant design",
+					"ant",
+					"outline",
+					"stroke"
+				]
+			}
+		]
+	},
+	{
+		"name": "Simple Icons",
+		"repository": "https://github.com/simple-icons/simple-icons",
+		"license": {
+			"type": "CC0",
+			"url": "https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "simple",
+				"keywords": [
+					"simple",
+					"simpleicons",
+					"simple icons"
+				]
+			}
+		]
+	},
+	{
+		"name": "Line Awesome",
+		"repository": "https://github.com/icons8/line-awesome",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/icons8/line-awesome/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "svg",
+				"prefix": "lineawesome",
+				"keywords": ["la", "line", "line awesome"]
+			}
+		]
+	}
+]
