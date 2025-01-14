@@ -10,11 +10,13 @@ export class IconSearcher {
 	private documents: Map<string, string>;
 	private invertedIndex: Map<string, Set<string>>;
 	public count: number;
+	private packagesIndex: Map<string, Set<string>>;
 
 	constructor() {
 		this.documents = new Map();
 		this.invertedIndex = new Map();
 		this.count = 0;
+		this.packagesIndex = new Map();
 	}
 
 	public async initialize(url: string): Promise<void> {
@@ -30,9 +32,13 @@ export class IconSearcher {
 			console.log("STEP 3");
 			const blob = await response.blob();
 			console.log("STEP 4");
-			const data = ungzip(
-				Buffer.from(await blob.arrayBuffer()),
-			);
+			const buf = Buffer.from(await blob.arrayBuffer());
+			let data;
+			try {
+				data = ungzip(buf);
+			} catch {
+				data = buf;
+			}
 			console.log("STEP 5");
 			const { documents, invertedIndex, docCount } =
 				this.parseBinaryIndex(data);
@@ -72,7 +78,7 @@ export class IconSearcher {
 		const str = new TextDecoder("ascii").decode(
 			buffer.slice(start, offset.value),
 		);
-		offset.value++; // Skip null terminator
+		offset.value++;
 		return str;
 	}
 
@@ -81,23 +87,37 @@ export class IconSearcher {
 		const documents = new Map<string, string>();
 		const invertedIndex = new Map<string, Set<string>>();
 
-		// Read total document count
 		const docCount = this.readVarInt(buffer, offset);
 
-		// Read document index
-		for (let i = 0; i < docCount; i++) {
-			const id = this.readVarInt(buffer, offset).toString();
-			const path = this.readNullTerminatedString(
+		let i = 0;
+		while (i < docCount) {
+			const count = this.readVarInt(buffer, offset);
+			const packageName = this.readNullTerminatedString(
 				buffer,
 				offset,
 			);
-			documents.set(id, `/icons/${path}.svg`);
+			console.log({ count, packageName });
+			const set = new Set<string>();
+
+			let j = 0;
+			while (j < count) {
+				const path = this.readNullTerminatedString(
+					buffer,
+					offset,
+				);
+				const fullPath = `${packageName}-${path}`;
+				set.add(fullPath);
+
+				documents.set(i.toString(), fullPath);
+				i++;
+				j++;
+			}
+
+			this.packagesIndex.set(packageName, set);
 		}
 
-		// Skip section separator
 		offset.value++;
 
-		// Read inverted index
 		while (offset.value < buffer.length) {
 			const term = this.readNullTerminatedString(
 				buffer,
@@ -108,7 +128,6 @@ export class IconSearcher {
 			const docIds = new Set<string>();
 			let lastId = 0;
 
-			// Read delta-encoded document IDs
 			for (let i = 0; i < idCount; i++) {
 				const delta = this.readVarInt(buffer, offset);
 				lastId += delta;
@@ -140,26 +159,34 @@ export class IconSearcher {
 		return normalizedPath.includes(normalizedQuery);
 	}
 
-	private getAll(): Icon[] {
-		const results: Icon[] = [];
-		let count = 0;
-
-		// Iterate over the documents values
-		for (const path of this.documents.values()) {
-			if (count >= 100) break; // Stop once we have 100 results
-			results.push({
-				path,
-				keywords: [], // Assuming keywords are fetched later
-			});
-			count++;
-		}
-
-		return results;
-	}
-
-	public search(query: string): Icon[] {
+	public search(query: string, packs: string[]): Icon[] {
 		const queryTokens = this.preprocessQuery(query);
-		if (queryTokens.length === 0) return this.getAll();
+		if (queryTokens.length === 0) {
+			const results: Icon[] = [];
+			let count = 0;
+			for (const key of this.packagesIndex.keys()) {
+				if (count >= 100) break;
+
+				if (packs.length === 0 || packs.includes(key)) {
+					results.push(
+						...Array(
+							...this.packagesIndex
+								.get(key)!
+								.values(),
+						).map((v) => ({
+							path:
+								"icons/" +
+								v +
+								".svg",
+							keywords: [],
+						})),
+					);
+				}
+				count++;
+			}
+
+			return results;
+		}
 
 		const scores = new Map<string, number>();
 
@@ -180,6 +207,21 @@ export class IconSearcher {
 							this.documents.get(
 								docId,
 							)!;
+
+						if (
+							packs.length > 0 &&
+							packs.includes(
+								path.substring(
+									0,
+									path.indexOf(
+										"-",
+									),
+								),
+							) == false
+						) {
+							return;
+						}
+
 						const currentScore =
 							scores.get(docId) || 0;
 						const pathMatchScore =
@@ -187,7 +229,6 @@ export class IconSearcher {
 								token,
 								path,
 							);
-
 						scores.set(
 							docId,
 							+match * 0.5 +
@@ -210,8 +251,8 @@ export class IconSearcher {
 			const path = this.documents.get(docId)!;
 			results.push({
 				score,
-				path,
-				keywords: [], // Assuming keywords are fetched later
+				path: "icons/" + path + ".svg",
+				keywords: [],
 			});
 		});
 
@@ -220,24 +261,17 @@ export class IconSearcher {
 		return results.slice(0, 100).filter((v) => v.score > 1);
 	}
 
-	public getFrequentTerms(
-		limit: number = 10,
-	): { term: string; count: number }[] {
-		const termFrequencies: { term: string; count: number }[] = [];
+	public getPackageNames(): { name: string; count: number }[] {
+		const packageFreq: { name: string; count: number }[] = [];
 
-		for (const [term, docIds] of this.invertedIndex) {
-			termFrequencies.push({
-				term,
-				count: docIds.size,
+		for (const [name, docs] of this.packagesIndex) {
+			packageFreq.push({
+				name,
+				count: docs.size,
 			});
 		}
 
-		termFrequencies.sort(
-			(a, b) =>
-				b.count - a.count ||
-				a.term.localeCompare(b.term),
-		);
-
-		return termFrequencies.slice(0, limit);
+		packageFreq.sort((a, b) => a.name.localeCompare(b.name));
+		return packageFreq;
 	}
 }

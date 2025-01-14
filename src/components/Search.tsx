@@ -6,17 +6,18 @@ import { useUrlState } from "../hooks/useUrlState";
 import { LucideGithub, Star } from "lucide-react";
 
 export function Search({ searcher }: { searcher: IconSearcher }) {
-	const [icons, setIcons] = useState<Icon[]>(searcher.search(""));
+	const [packs, setPacks] = useUrlState<string[]>("packs", []);
+	const [icons, setIcons] = useState<Icon[]>(searcher.search("", packs));
 	const [searchQuery, setSearchQuery] = useUrlState("query", "");
 	const [selectedIcon, setSelectedIcon] = useUrlState<Icon | null>(
 		"selected",
 		null,
 	);
-	const frequentTerms = searcher.getFrequentTerms(15);
+	const packageNames = searcher.getPackageNames();
 
 	useEffect(() => {
-		setIcons(searcher.search(searchQuery));
-	}, [searchQuery, setIcons, searcher]);
+		setIcons(searcher.search(searchQuery, packs));
+	}, [searchQuery, setIcons, searcher, packs]);
 
 	return (
 		<div className="flex flex-row">
@@ -31,7 +32,34 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 				<div className="relative mb-6">
 					<input
 						type="text"
-						placeholder={`Search in ${searcher.count} icons...`}
+						placeholder={`Search in ${
+							packs.length == 0
+								? searcher.count
+								: packageNames
+										.filter(
+											(
+												v,
+											) =>
+												packs.includes(
+													v.name,
+												),
+										)
+										.map(
+											(
+												v,
+											) =>
+												v.count,
+										)
+										.reduce(
+											(
+												acc,
+												curr,
+											) =>
+												acc +
+												curr,
+											0,
+										)
+						} icons...`}
 						value={searchQuery}
 						onChange={(e) =>
 							setSearchQuery(
@@ -40,6 +68,29 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 						}
 						className="w-full bg-gray-800 rounded-lg py-2 px-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
 					/>
+
+					{packs.length > 0 && (
+						<div className="flex flex-row gap-2 mt-2 overflow-x-auto">
+							{packs.map((v) => (
+								<div
+									className="bg-blue-700 px-2 py-1 rounded"
+									onClick={() =>
+										setPacks(
+											packs.filter(
+												(
+													e,
+												) =>
+													e !=
+													v,
+											),
+										)
+									}
+								>
+									{v}
+								</div>
+							))}
+						</div>
+					)}
 				</div>
 
 				<div className="flex flex-row gap-3 mb-4">
@@ -65,25 +116,43 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 
 				<div className="mt-8">
 					<h2 className="text-lg font-semibold mb-4 text-gray-300">
-						Frequent Terms
+						Packages
 					</h2>
 					<div className="flex flex-col gap-2">
-						{frequentTerms.map(
-							({ term, count }) => (
+						{packageNames.map(
+							({ name, count }) => (
 								<button
 									key={
-										term
+										name
 									}
-									onClick={() =>
-										setSearchQuery(
-											term,
+									onClick={() => {
+										if (
+											packs.includes(
+												name,
+											)
 										)
-									}
+											setPacks(
+												packs.filter(
+													(
+														v,
+													) =>
+														v !==
+														name,
+												),
+											);
+										else
+											setPacks(
+												[
+													...packs,
+													name,
+												],
+											);
+									}}
 									className="group text-left px-3 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-all duration-200 flex items-center justify-between"
 								>
 									<span className="text-gray-300 group-hover:text-white transition-colors">
 										{
-											term
+											name
 										}
 									</span>
 									<span className="text-xs px-2 py-1 rounded-full bg-gray-700 text-gray-400 group-hover:bg-gray-600 group-hover:text-gray-200 transition-colors">

@@ -4,21 +4,24 @@ import { Search } from "./components/Search";
 import { useEffect, useMemo, useState } from "react";
 
 export default function App() {
-	const [initialized, setInitialized] = useState(false);
+	const [status, setStatus] = useState("idle");
 	const searcher = useMemo(() => {
 		return new IconSearcher();
 	}, []);
 
 	useEffect(() => {
-		searcher.initialize("icon-search-index.bin.gz").then(() =>
-			setInitialized(true),
-		);
-	}, [searcher]);
+		if (status === "idle") {
+			setStatus("loading");
+			searcher.initialize("icon-search-index.bin.gz").then(
+				() => setStatus("done"),
+			);
+		}
+	}, [searcher, setStatus, status]);
 
 	return (
 		<>
 			<SEO />
-			{initialized && (
+			{status == "done" && (
 				<div className="min-h-screen bg-gray-50">
 					<Search searcher={searcher} />
 				</div>
