@@ -3,7 +3,7 @@ import { IconSearcher } from "../utils/search";
 import { Icon } from "../types/icons";
 import { IconDetails } from "./IconDetails/index";
 import { useUrlState } from "../hooks/useUrlState";
-import { LucideGithub, Star } from "lucide-react";
+import { FilterX, LucideGithub, Star } from "lucide-react";
 
 export function Search({ searcher }: { searcher: IconSearcher }) {
 	const [packs, setPacks] = useUrlState<string[]>("packs", []);
@@ -21,7 +21,7 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 
 	return (
 		<div className="flex flex-row">
-			<div className="bg-gray-900 h-screen sticky min-w-72 left-0 top-0 p-6 overflow-y-auto text-white">
+			<div className="bg-gray-900 h-screen sticky w-96 left-0 top-0 p-6 overflow-y-auto text-white">
 				<h1 className="text-2xl font-light mb-8 whitespace-pre-line">
 					<span className="text-4xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient font-black">
 						FASTEST
@@ -70,25 +70,41 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 					/>
 
 					{packs.length > 0 && (
-						<div className="flex flex-row gap-2 mt-2 overflow-x-auto">
-							{packs.map((v) => (
-								<div
-									className="bg-blue-700 px-2 py-1 rounded"
-									onClick={() =>
-										setPacks(
-											packs.filter(
-												(
-													e,
-												) =>
-													e !=
-													v,
-											),
-										)
-									}
-								>
-									{v}
-								</div>
-							))}
+						<div className="flex flex-row gap-2 items-center justify-center">
+							<div className="flex flex-row flex-1 gap-2 py-4 overflow-x-auto">
+								{packs.map(
+									(v) => (
+										<div
+											className="bg-blue-700 px-2 py-1 rounded cursor-pointer"
+											onClick={() =>
+												setPacks(
+													packs.filter(
+														(
+															e,
+														) =>
+															e !=
+															v,
+													),
+												)
+											}
+										>
+											{
+												v
+											}
+										</div>
+									),
+								)}
+							</div>
+							<div
+								className="p-2 bg-red-600 rounded fill-white cursor-pointer"
+								onClick={() =>
+									setPacks(
+										[],
+									)
+								}
+							>
+								<FilterX className="w-4 h-4" />
+							</div>
 						</div>
 					)}
 				</div>
@@ -148,7 +164,13 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 												],
 											);
 									}}
-									className="group text-left px-3 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-all duration-200 flex items-center justify-between"
+									className={`group text-left px-3 py-2 rounded-lg  transition-all duration-200 flex items-center justify-between ${
+										packs.includes(
+											name,
+										)
+											? "bg-gray-600 hover:bg-gray-500"
+											: "bg-gray-800 hover:bg-gray-700"
+									}`}
 								>
 									<span className="text-gray-300 group-hover:text-white transition-colors">
 										{
