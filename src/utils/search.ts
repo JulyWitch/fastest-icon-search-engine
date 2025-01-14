@@ -229,7 +229,7 @@ export class IconSearcher {
 			}
 		}
 
-		return results;
+		return results.slice(0, 200);
 	}
 
 	private performSearch(
