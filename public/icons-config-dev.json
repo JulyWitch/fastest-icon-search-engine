@@ -1,0 +1,21 @@
+[
+	{
+		"name": "Simple Icons",
+		"repository": "https://github.com/simple-icons/simple-icons",
+		"license": {
+			"type": "CC0",
+			"url": "https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "simple",
+				"keywords": [
+					"simple",
+					"simpleicons",
+					"simple icons"
+				]
+			}
+		]
+	}
+]

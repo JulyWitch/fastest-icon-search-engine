@@ -1,6 +1,8 @@
 import { Buffer } from "buffer";
 import { ungzip } from "pako";
 
+import { CharacterEncoder } from "./character-encoder";
+
 interface Icon {
 	path: string;
 	keywords: string[];
@@ -10,11 +12,13 @@ export class IconSearcher {
 	private documents: Map<string, string>;
 	private invertedIndex: Map<string, Set<string>>;
 	public count: number;
+	private encoder: CharacterEncoder;
 
 	constructor() {
 		this.documents = new Map();
 		this.invertedIndex = new Map();
 		this.count = 0;
+		this.encoder = new CharacterEncoder();
 	}
 
 	public async initialize(url: string): Promise<void> {
@@ -30,12 +34,16 @@ export class IconSearcher {
 			console.log("STEP 3");
 			const blob = await response.blob();
 			console.log("STEP 4");
-			const data = ungzip(
-				Buffer.from(await blob.arrayBuffer()),
-			);
+			const buf = Buffer.from(await blob.arrayBuffer());
+			let data;
+			try {
+				data = ungzip(buf);
+			} catch {
+				data = buf;
+			}
 			console.log("STEP 5");
 			const { documents, invertedIndex, docCount } =
-				this.parseBinaryIndex(data);
+				this.parseBinaryIndex(Buffer.from(data));
 			console.log("STEP 6");
 			this.documents = documents;
 			this.invertedIndex = invertedIndex;
@@ -46,58 +54,103 @@ export class IconSearcher {
 		}
 	}
 
-	private readVarInt(
-		buffer: Uint8Array,
-		offset: { value: number },
-	): number {
+	private readVarInt(bits: string, offset: { value: number }) {
 		let result = 0;
 		let shift = 0;
 
 		while (true) {
-			const byte = buffer[offset.value++];
+			if (offset.value + 8 > bits.length) {
+				throw new Error(
+					"Invalid VarInt: Not enough bits to read a byte",
+				);
+			}
+
+			const byte = parseInt(
+				bits.substring(offset.value, offset.value + 8),
+				2,
+			);
+			offset.value += 8;
+
 			result |= (byte & 0x7f) << shift;
-			if ((byte & 0x80) === 0) break;
+
+			if ((byte & 0x80) === 0) {
+				break;
+			}
+
 			shift += 7;
+
+			if (shift >= 32) {
+				throw new Error("Invalid VarInt: Overflow");
+			}
 		}
 
 		return result;
 	}
 
 	private readNullTerminatedString(
-		buffer: Uint8Array,
+		bits: string,
 		offset: { value: number },
 	): string {
 		const start = offset.value;
-		while (buffer[offset.value] !== 0) offset.value++;
-		const str = new TextDecoder("ascii").decode(
-			buffer.slice(start, offset.value),
-		);
-		offset.value++; // Skip null terminator
-		return str;
+		let result = "";
+
+		while (true) {
+			if (offset.value + 8 > bits.length) {
+				throw new Error(
+					"Invalid string: Not enough bits to read a byte",
+				);
+			}
+
+			const byte = parseInt(
+				bits.substring(offset.value, offset.value + 8),
+				2,
+			);
+			offset.value += 8;
+
+			if (byte === 0) {
+				break;
+			}
+
+			result += String.fromCharCode(byte);
+		}
+
+		console.log("All bits from start:", bits.substring(start));
+		console.log("Decoding string:", result);
+		return result;
 	}
 
-	private parseBinaryIndex(buffer: Uint8Array) {
+	parseBinaryIndex(buffer: Buffer) {
 		const offset = { value: 0 };
 		const documents = new Map<string, string>();
 		const invertedIndex = new Map<string, Set<string>>();
-
-		// Read total document count
-		const docCount = this.readVarInt(buffer, offset);
-
-		// Read document index
-		for (let i = 0; i < docCount; i++) {
-			const id = this.readVarInt(buffer, offset).toString();
-			const path = this.readNullTerminatedString(
-				buffer,
+		let currentPackage = "";
+		let bits = "";
+		let id = 0;
+		buffer.forEach((v) => (bits += v.toString(2)));
+		while (true) {
+			const value = this.readVarInt(bits, offset);
+			console.log("Value", value);
+			currentPackage = this.readNullTerminatedString(
+				bits,
 				offset,
 			);
-			documents.set(id, `/icons/${path}.svg`);
+			console.log("currentPackage", currentPackage);
+
+			for (let i = 0; i < value; i++) {
+				const relativePath =
+					this.readNullTerminatedString(
+						bits,
+						offset,
+					);
+				console.log("Decoded", relativePath);
+				const fullPath = `/icons/${currentPackage}-${relativePath}.svg`;
+				documents.set(id.toString(), fullPath);
+				id += 1;
+			}
 		}
 
-		// Skip section separator
 		offset.value++;
 
-		// Read inverted index
 		while (offset.value < buffer.length) {
 			const term = this.readNullTerminatedString(
 				buffer,
@@ -108,7 +161,6 @@ export class IconSearcher {
 			const docIds = new Set<string>();
 			let lastId = 0;
 
-			// Read delta-encoded document IDs
 			for (let i = 0; i < idCount; i++) {
 				const delta = this.readVarInt(buffer, offset);
 				lastId += delta;
@@ -120,7 +172,6 @@ export class IconSearcher {
 
 		return { documents, invertedIndex, docCount };
 	}
-
 	private preprocessQuery(query: string): string[] {
 		return query
 			.toLowerCase()
@@ -144,12 +195,11 @@ export class IconSearcher {
 		const results: Icon[] = [];
 		let count = 0;
 
-		// Iterate over the documents values
 		for (const path of this.documents.values()) {
-			if (count >= 100) break; // Stop once we have 100 results
+			if (count >= 100) break;
 			results.push({
 				path,
-				keywords: [], // Assuming keywords are fetched later
+				keywords: [],
 			});
 			count++;
 		}
@@ -211,7 +261,7 @@ export class IconSearcher {
 			results.push({
 				score,
 				path,
-				keywords: [], // Assuming keywords are fetched later
+				keywords: [],
 			});
 		});
 
