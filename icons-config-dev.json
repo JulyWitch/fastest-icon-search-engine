@@ -1,69 +1,393 @@
 [
 	{
-		"name": "Ant Design",
-		"repository": "https://github.com/ant-design/ant-design-icons",
+		"name": "Game Icons",
+		"repository": "https://github.com/game-icons/icons",
 		"license": {
-			"type": "MIT",
-			"url": "https://github.com/ant-design/ant-design-icons/blob/master/LICENSE"
+			"type": "CC-BY",
+			"url": "https://github.com/game-icons/icons/blob/master/license.txt"
 		},
 		"sources": [
 			{
-				"path": "packages/icons-svg/svg/filled",
-				"prefix": "ant",
-				"postfix": "filled",
-				"keywords": [
-					"antd",
-					"ant design",
-					"ant",
-					"filled",
-					"solid"
-				]
+				"path": "andymeneely",
+				"prefix": "gameicons",
+				"postfix": "andymeneely"
 			},
 			{
-				"path": "packages/icons-svg/svg/outlined",
-				"prefix": "ant",
-				"postfix": "outlined",
-				"keywords": [
-					"antd",
-					"ant design",
-					"ant",
-					"outline",
-					"stroke"
-				]
+				"path": "aussiesim",
+				"prefix": "gameicons",
+				"postfix": "aussiesim"
+			},
+			{
+				"path": "badges",
+				"prefix": "gameicons",
+				"postfix": "badges"
+			},
+			{
+				"path": "carl-olsen",
+				"prefix": "gameicons",
+				"postfix": "carlolsen"
+			},
+			{
+				"path": "caro-asercion",
+				"prefix": "gameicons",
+				"postfix": "caroasercion"
+			},
+			{
+				"path": "cathelineau",
+				"prefix": "gameicons",
+				"postfix": "cathelineau"
+			},
+			{
+				"path": "catsu",
+				"prefix": "gameicons",
+				"postfix": "catsu"
+			},
+			{
+				"path": "darkzaitzev",
+				"prefix": "gameicons",
+				"postfix": "darkzaitzev"
+			},
+			{
+				"path": "delapouite",
+				"prefix": "gameicons",
+				"postfix": "delapouite"
+			},
+			{
+				"path": "faithtoken",
+				"prefix": "gameicons",
+				"postfix": "faithtoken"
+			},
+			{
+				"path": "felbrigg",
+				"prefix": "gameicons",
+				"postfix": "felbrigg"
+			},
+			{
+				"path": "generalace135",
+				"prefix": "gameicons",
+				"postfix": "generalace135"
+			},
+			{
+				"path": "guard13007",
+				"prefix": "gameicons",
+				"postfix": "guard13007"
+			},
+			{
+				"path": "heavenly-dog",
+				"prefix": "gameicons",
+				"postfix": "heavenlydog"
+			},
+			{
+				"path": "irongamer",
+				"prefix": "gameicons",
+				"postfix": "irongamer"
+			},
+			{
+				"path": "john-colburn",
+				"prefix": "gameicons",
+				"postfix": "johncolburn"
+			},
+			{
+				"path": "john-redman",
+				"prefix": "gameicons",
+				"postfix": "johnredman"
+			},
+			{
+				"path": "kier-heyl",
+				"prefix": "gameicons",
+				"postfix": "kierheyl"
+			},
+			{
+				"path": "lorc",
+				"prefix": "gameicons",
+				"postfix": "lorc"
+			},
+			{
+				"path": "lord-berandas",
+				"prefix": "gameicons",
+				"postfix": "lordberandas"
+			},
+			{
+				"path": "lucasms",
+				"prefix": "gameicons",
+				"postfix": "lucasms"
+			},
+			{
+				"path": "pepijn-poolman",
+				"prefix": "gameicons",
+				"postfix": "pepijnpoolman"
+			},
+			{
+				"path": "pierre-leducq",
+				"prefix": "gameicons",
+				"postfix": "pierreleducq"
+			},
+			{
+				"path": "priorblue",
+				"prefix": "gameicons",
+				"postfix": "priorblue"
+			},
+			{
+				"path": "quoting",
+				"prefix": "gameicons",
+				"postfix": "quoting"
+			},
+			{
+				"path": "rihlsul",
+				"prefix": "gameicons",
+				"postfix": "rihlsul"
+			},
+			{
+				"path": "sbed",
+				"prefix": "gameicons",
+				"postfix": "sbed"
+			},
+			{
+				"path": "skoll",
+				"prefix": "gameicons",
+				"postfix": "skoll"
+			},
+			{
+				"path": "sparker",
+				"prefix": "gameicons",
+				"postfix": "sparker"
+			},
+			{
+				"path": "spencerdub",
+				"prefix": "gameicons",
+				"postfix": "spencerdub"
+			},
+			{
+				"path": "starseeker",
+				"prefix": "gameicons",
+				"postfix": "starseeker"
+			},
+			{
+				"path": "various-artists",
+				"prefix": "gameicons",
+				"postfix": "variousartists"
+			},
+			{
+				"path": "viscious-speed",
+				"prefix": "gameicons",
+				"postfix": "visciousspeed"
+			},
+			{
+				"path": "willdabeast",
+				"prefix": "gameicons",
+				"postfix": "willdabeast"
+			},
+			{
+				"path": "zajkonur",
+				"prefix": "gameicons",
+				"postfix": "zajkonur"
+			},
+			{
+				"path": "zeromancer",
+				"prefix": "gameicons",
+				"postfix": "zeromancer"
 			}
 		]
 	},
 	{
-		"name": "Simple Icons",
-		"repository": "https://github.com/simple-icons/simple-icons",
+		"name": "vscode-icons",
+		"repository": "https://github.com/vscode-icons/vscode-icons",
 		"license": {
-			"type": "CC0",
-			"url": "https://github.com/simple-icons/simple-icons/blob/master/LICENSE.md"
+			"type": "MIT",
+			"url": "https://github.com/vscode-icons/vscode-icons/blob/master/LICENSE"
 		},
 		"sources": [
 			{
 				"path": "icons",
-				"prefix": "simple",
-				"keywords": [
-					"simple",
-					"simpleicons",
-					"simple icons"
-				]
+				"prefix": "vscodeicons"
 			}
 		]
 	},
 	{
-		"name": "Line Awesome",
-		"repository": "https://github.com/icons8/line-awesome",
+		"name": "Typicons",
+		"repository": "https://github.com/stephenhutchings/typicons.font",
 		"license": {
-			"type": "MIT",
-			"url": "https://github.com/icons8/line-awesome/blob/master/LICENSE.md"
+			"type": "CC BY-SA 4.0",
+			"url": "https://github.com/stephenhutchings/typicons.font/blob/master/LICENCE.md"
+		},
+		"sources": [
+			{
+				"path": "src/svg",
+				"prefix": "typicons"
+			}
+		]
+	},
+	{
+		"name": "Themify Icons",
+		"repository": "https://github.com/lykmapipo/themify-icons",
+		"license": {
+			"type": "SIL Open Font License 1.1",
+			"url": "https://github.com/lykmapipo/themify-icons/blob/master/README.md#license"
+		},
+		"sources": [
+			{
+				"path": "SVG",
+				"prefix": "themifyicons"
+			}
+		]
+	},
+	{
+		"name": "Circum Icons",
+		"repository": "https://github.com/Klarr-Agency/Circum-Icons",
+		"license": {
+			"type": "MPL-2.0",
+			"url": "https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE"
 		},
 		"sources": [
 			{
 				"path": "svg",
-				"prefix": "lineawesome",
-				"keywords": ["la", "line", "line awesome"]
+				"prefix": "circumicons"
+			}
+		]
+	},
+	{
+		"name": "Weather Icons",
+		"repository": "https://github.com/erikflowers/weather-icons",
+		"license": {
+			"type": "SIL OFL 1.1",
+			"url": "https://github.com/erikflowers/weather-icons"
+		},
+		"sources": [
+			{
+				"path": "svg",
+				"prefix": "weathericons"
+			}
+		]
+	},
+	{
+		"name": "CSS＊GG GLYF＊APP",
+		"repository": "https://github.com/astrit/css.gg",
+		"license": {
+			"type": "Astrit Custom License",
+			"url": "https://github.com/astrit/css.gg/blob/main/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "icons/svg",
+				"prefix": "cssgg"
+			}
+		]
+	},
+	{
+		"name": "Evil Icons",
+		"repository": "https://github.com/evil-icons/evil-icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/evil-icons/evil-icons/blob/master/LICENSE.txt"
+		},
+		"sources": [
+			{
+				"path": "assets/icons",
+				"prefix": "evilicons"
+			}
+		]
+	},
+	{
+		"name": "Eva Icons",
+		"repository": "https://github.com/akveo/eva-icons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/akveo/eva-icons/blob/master/LICENSE.txt"
+		},
+		"sources": [
+			{
+				"path": "package/icons/fill/svg",
+				"prefix": "evaicons",
+				"postfix": "filled"
+			},
+			{
+				"path": "package/icons/outline/svg",
+				"prefix": "evaicons",
+				"postfix": "outlined"
+			}
+		]
+	},
+	{
+		"name": "Govicons",
+		"repository": "https://github.com/540co/govicons",
+		"license": {
+			"type": "SIL OFL 1.1",
+			"url": "https://github.com/540co/govicons/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "raw-svg",
+				"prefix": "govicons"
+			}
+		]
+	},
+	{
+		"name": "Jam Icons",
+		"repository": "https://github.com/michaelampr/jam",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/michaelampr/jam/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "jamicons"
+			}
+		]
+	},
+	{
+		"name": "Material Design Icons",
+		"repository": "https://github.com/Templarian/MaterialDesign",
+		"license": {
+			"type": "Apache 2.0",
+			"url": "https://github.com/Templarian/MaterialDesign/blob/master/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "svg",
+				"prefix": "materialdesign"
+			}
+		]
+	},
+	{
+		"name": "Octicons",
+		"repository": "https://github.com/primer/octicons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/primer/octicons/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "octicons"
+			}
+		]
+	},
+	{
+		"name": "VS Code Codicons",
+		"repository": "https://github.com/microsoft/vscode-codicons",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/microsoft/vscode-codicons/blob/main/LICENSE"
+		},
+		"sources": [
+			{
+				"path": "src/icons",
+				"prefix": "codicons"
+			}
+		]
+	},
+	{
+		"name": "Seti UI",
+		"repository": "https://github.com/jesseweed/seti-ui",
+		"license": {
+			"type": "MIT",
+			"url": "https://github.com/jesseweed/seti-ui/blob/master/LICENSE.md"
+		},
+		"sources": [
+			{
+				"path": "icons",
+				"prefix": "setiui"
 			}
 		]
 	}
