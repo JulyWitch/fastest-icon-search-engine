@@ -153,7 +153,11 @@ class IconIndexer {
 			...invertedParts,
 		]);
 
-		return fullBuffer;
+		return gzip(fullBuffer, {
+			level: 9,
+			memLevel: 9,
+			strategy: 2,
+		});
 	}
 }
 
@@ -226,7 +230,7 @@ writeFileSync(
 	JSON.stringify(searchIndex, null, 2),
 );
 
-writeFileSync("public/icon-search-index", binaryIndex);
+writeFileSync("public/icon-search-index.gz", binaryIndex);
 
 const jsonSize = Buffer.byteLength(JSON.stringify(searchIndex));
 const binarySize = binaryIndex.length;
