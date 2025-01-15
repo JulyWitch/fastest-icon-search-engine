@@ -12,8 +12,8 @@ export default function App() {
 	useEffect(() => {
 		if (status === "idle") {
 			setStatus("loading");
-			searcher.initialize("icon-search-index.bin.gz").then(
-				() => setStatus("done"),
+			searcher.initialize("icon-search-index").then(() =>
+				setStatus("done"),
 			);
 		}
 	}, [searcher, setStatus, status]);
