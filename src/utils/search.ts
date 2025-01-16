@@ -1,5 +1,3 @@
-import { ungzip } from "pako";
-
 interface Icon {
 	path: string;
 	keywords: string[];
@@ -39,15 +37,7 @@ export class IconSearcher {
 			}
 
 			const buf = await response.arrayBuffer();
-			let data: Uint8Array;
-
-			try {
-				data = ungzip(buf);
-				console.log("USED PAKO");
-			} catch {
-				data = new Uint8Array(buf);
-				console.log("USED BUF");
-			}
+			const data = new Uint8Array(buf);
 
 			const {
 				documents,

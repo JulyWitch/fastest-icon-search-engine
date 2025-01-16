@@ -13,11 +13,11 @@
 	},
 	"dependencies": {
 		"lucide-react": "^0.469.0",
-		"pako": "^2.1.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},
 	"devDependencies": {
+		"pako": "^2.1.0",
 		"@eslint/js": "^9.9.1",
 		"@types/pako": "^2.0.3",
 		"@types/react": "^18.3.5",
