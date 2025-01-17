@@ -6,37 +6,37 @@ This project is inspired by [react-icons](https://react-icons.github.io/react-ic
 
 ## 🏎️ Why is it the Fastest?
 
-1. **Inverted Index Search Algorithm**  
+1. **Inverted Index Search Algorithm**
    - The core of the search engine is powered by an inverted index, enabling lightning-fast lookups by mapping terms to relevant icons.
 
-2. **Binary Index Compression**  
+2. **Binary Index Compression**
    - Icon data is indexed, compressed into a binary format, and passed to the client side, minimizing bandwidth usage and ensuring optimal performance.
 
-3. **Low Memory Footprint**  
+3. **Low Memory Footprint**
    - The client-side search engine parses the binary index, offering a highly efficient solution with minimal memory consumption.
 
 ## 🛠️ Built With
 
 This project combines expertise from multiple domains:
 
-- **React**: A robust UI framework for building an intuitive and responsive search interface.  
-- **Buffers**: Efficiently handle binary data for index compression and parsing.  
-- **NLP**: Using inverted index search to optimize memory usage and boost performance.  
-- **Scripting**: Automation and scripting expertise to streamline indexing and processing.  
+- **Preact**: A robust UI framework with React API but with way less memory and bundle footprint.
+- **Buffers**: Efficiently handle binary data for index compression and parsing.
+- **NLP**: Using inverted index search to optimize memory usage and boost performance.
+- **Scripting**: Automation and scripting expertise to streamline indexing and processing.
 - **GitHub CI/CD**: Automated pipelines for testing, building, and deploying the project seamlessly.
 
 ## 🎯 Features
 
-- **Ultra-Fast Search**: Instant results powered by a compressed binary index.  
-- **Cross-Platform Support**: Works seamlessly across browsers and devices.  
-- **Scalable Indexing**: Easily add new icon packs with minimal effort.  
+- **Ultra-Fast Search**: Instant results powered by a compressed binary index.
+- **Cross-Platform Support**: Works seamlessly across browsers and devices.
+- **Scalable Indexing**: Easily add new icon packs with minimal effort.
 - **Memory Optimization**: Designed for the lowest possible memory usage on the client side.
 
 ## 🌱 Early Phases
 
 This project is in its early stages, and I’m actively working to:
 
-- Add support for more icon packs.  
+- Add support for more icon packs.
 - Fix issues and improve performance.
 
 Your feedback and contributions are welcome!
