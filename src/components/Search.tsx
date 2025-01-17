@@ -5,15 +5,6 @@ import { Icon } from "../types/icons";
 import { IconDetails } from "./IconDetails/index";
 import { useUrlState } from "../hooks/useUrlState";
 
-const Header = ({ title }: { title: string }) => (
-	<h1 className="text-xl md:text-2xl font-light mb-4 md:mb-8 whitespace-pre-line">
-		<span className="text-3xl md:text-4xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-black">
-			{title}
-		</span>
-		{"\n"}Icon Search Engine
-	</h1>
-);
-
 const SearchInput = ({
 	placeholder,
 	value,
@@ -207,7 +198,12 @@ export function Search({ searcher }: { searcher: IconSearcher }) {
 	return (
 		<div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
 			<aside className="bg-gray-900 p-4 md:p-6 text-white md:h-screen md:sticky md:top-0 md:w-80 md:overflow-y-auto">
-				<Header title="FASTEST" />
+				<h1 className="text-xl md:text-2xl font-light mb-4 md:mb-8 whitespace-pre-line">
+					<span className="text-3xl md:text-4xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-black">
+						FASTEST
+					</span>
+					{"\n"}Icon Search Engine
+				</h1>
 				<div className="mb-6">
 					<SearchInput
 						placeholder={`Search ${getSelectedPackageCount} icons...`}
