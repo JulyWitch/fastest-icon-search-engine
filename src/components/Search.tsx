@@ -129,7 +129,7 @@ const IconGrid = ({
 		path.substring(path.lastIndexOf("/") + 1, path.indexOf("-"));
 
 	return (
-		<div className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-1 md:gap-2">
+		<div className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7 gap-1 md:gap-2">
 			{icons.map((icon) => (
 				<button
 					key={icon.path}
@@ -144,7 +144,7 @@ const IconGrid = ({
 					<span className="mt-2 text-xs text-gray-600 truncate w-full text-center">
 						{getIconName(icon.path)}
 					</span>
-					<span className="bg-blue-200 self-start font-medium rounded px-1 py-0.5 m-0.5 text-xs text-gray-600 truncate">
+					<span className="bg-gray-200 self-start font-medium rounded px-1 py-0.5 text-[10px] md:text-xs text-gray-600 truncate">
 						{getPackageName(icon.path)}
 					</span>
 				</button>
